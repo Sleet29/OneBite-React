@@ -1,7 +1,7 @@
 // 콜백 함수
 function main(value) {
-  console.log(1);
-  console.log(2);
+  //   console.log(1);
+  //   console.log(2);
   value();
   //   console.log("end");
 }
@@ -18,18 +18,42 @@ main(sub); // 여기서 sub가 콜백함수다.
 // 1. 콜백함수
 
 // 2. 콜백함수의 활용
-function repeat(count) {
+// function repeat(count) {
+//   for (let idx = 1; idx <= count; idx++) {
+//     console.log(idx);
+//   }
+// }
+
+// repeat(5);
+
+// function repeatDouble(count) {
+//   for (let idx = 1; idx <= count; idx++) {
+//     // console.log(idx * 2);
+//   }
+// }
+
+// 위와같이 같은 원리의 함수들을 이름만 double, triple 등으로 바꾸면 중복 코드가 발생하여 좋지 않음
+// 이런경우에 콜백 함수를 사용
+// 그래서 어떻게 바꾸냐면~
+
+function repeatPractice(count, callback) {
   for (let idx = 1; idx <= count; idx++) {
-    console.log(idx);
+    callback(idx);
   }
 }
 
-repeat(5);
+repeatPractice(5, function (idx) {
+  console.log(idx);
+});
 
-function repeatDouble(count) {
-  for (let idx = 1; idx <= count; idx++) {
-    console.log(idx * 2);
-  }
-}
+repeatPractice(5, function (idx) {
+  console.log(idx * 2);
+});
 
-repeatDouble(5);
+repeatPractice(5, function (idx) {
+  console.log(idx * 3);
+});
+
+// repeatPractice(5, (idx) => {
+// console.log(idx * 3);
+// });  이런식으로 간편하게 바꿀 수 있다. 콜백 함수는 자주 사용하는듯하니 잘 익혀두자
